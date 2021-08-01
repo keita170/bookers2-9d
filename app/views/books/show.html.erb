@@ -19,6 +19,27 @@
                </th>
             <th><%= link_to @booki.title, book_path(@booki.id) %></th>
             <th><%= @booki.body %></th>
+            <th class="book_<%= @booki.id %>">
+              <%= render 'favorites/favorite-button', booki: @booki %>
+            </th>
+            <th class="comment-view">
+                <p>コメント件数：<%= @booki.comments.count %></p>
+            </th>
+            <th>
+                <div id="evaluation-rate<%= @booki.id %>">
+                </div>
+                <script>
+                  $('#evaluation-rate<%= @booki.id %>').raty({
+                    size     : 36,
+                    starOn: '<%= asset_path('star-on.png') %>',
+                    starOff: '<%= asset_path('star-off.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    score: <%= @booki.evaluation %>,
+                    half: true,
+                    readOnly: true,
+                  });
+                </script>
+            </th>
             <% if @booki.user == current_user %>
             <th><%= link_to "Edit", edit_book_path(@booki) ,class:"btn btn-sm btn-success" %></th>
             <th><%= link_to "Destroy", destroy_book_path(@booki) , method: :delete , "data-confirm" => "本当に消しますか？" ,class:"btn btn-sm btn-danger" %></th>
@@ -26,12 +47,7 @@
 
 
 
-            <th class="book_<%= @booki.id %>">
-              <%= render 'favorites/favorite-button', booki: @booki %>
-            </th>
-            <th class="comment-view">
-                <p>コメント件数：<%= @booki.comments.count %></p>
-            </th>
+            
 
 
            </tr>

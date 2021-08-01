@@ -65,6 +65,21 @@
              <th><%= link_to book.title, book_path(book.id) %></th>
              <th><%= book.body %></th>
              <th><p>コメント件数：<%= book.comments.count %></p></th>
+             <th>
+                <div id="evaluation-rate-usershow<%= book.id %>">
+                </div>
+                <script>
+                  $('#evaluation-rate-usershow<%= book.id %>').raty({
+                    size     : 36,
+                    starOn: '<%= asset_path('star-on.png') %>',
+                    starOff: '<%= asset_path('star-off.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    score: <%= book.evaluation %>,
+                    half: true,
+                    readOnly: true,
+                  });
+                </script>
+            </th>
            </tr>
            <% end %>
           </tbody>
