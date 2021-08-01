@@ -1,0 +1,23 @@
+<h2>Following Users</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @users.each do |user| %>
+  <tbody>
+    <tr>
+      <th><%= attachment_image_tag user, :profile_image,  format: 'jpeg', fallback: "no_image.jpg", size: "40x40" %></th>
+      <th><%= user.name %></th>
+      <th>フォロー数：<%= user.following_user.count %></th>
+      <th><p>フォロワー数:<%= user.follower_user.count %></p></th>
+      <th><%= link_to "Show", user_path(user) %></th>
+    </tr>
+  </tbody>
+  <% end %>
+</table>

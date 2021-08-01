@@ -1,0 +1,58 @@
+
+
+
+<body>
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+      <div class="col-md-3">
+        <%= render 'books/list', book: @book, user: @user %>
+      </div>
+      <div class="col-md-8 offset-md-1">
+        <h2>Book detail</h2>
+        <table class="table table-hover table-inverse">
+          
+           <tr>
+            <th><%= link_to user_path(@booki.user) do %>
+               <%= attachment_image_tag @booki.user, :profile_image,  format: 'jpeg', fallback: "no_image.jpg", size: "40x40" %>
+               <% end %><br>
+               <%= link_to @user.name, user_path(@booki.user) %>
+               </th>
+            <th><%= link_to @booki.title, book_path(@booki.id) %></th>
+            <th><%= @booki.body %></th>
+            <% if @booki.user == current_user %>
+            <th><%= link_to "Edit", edit_book_path(@booki) ,class:"btn btn-sm btn-success" %></th>
+            <th><%= link_to "Destroy", destroy_book_path(@booki) , method: :delete , "data-confirm" => "本当に消しますか？" ,class:"btn btn-sm btn-danger" %></th>
+            <% end %>
+
+
+
+            <th class="book_<%= @booki.id %>">
+              <%= render 'favorites/favorite-button', booki: @booki %>
+            </th>
+            <th class="comment-view">
+                <p>コメント件数：<%= @booki.comments.count %></p>
+            </th>
+
+
+           </tr>
+        </table>
+        
+        
+         <table>
+          <tbody id="comment_area">
+            <%= render 'comments/comment', booki: @booki %>
+          </tbody>
+        </table>
+
+        
+        <div class="new-comment" >
+            <%= form_with(model:[@booki, @comment], remote:true) do |f| %>
+            <%= f.text_area :comment, size:"80x6", class:"inputComment" %><br>
+            <%= f.submit "送信" %>
+            <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>

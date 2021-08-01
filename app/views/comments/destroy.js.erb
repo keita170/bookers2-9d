@@ -1,0 +1,2 @@
+$('#comment_area').html("<%= j( render 'comments/comment', booki: @booki ) %>")
+$(".comment-view").html( "コメント件数：<%= @booki.comments.count %>" );
