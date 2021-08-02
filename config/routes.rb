@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'home/about' => 'homes#about'
   
+  get 'home/search' => 'homes#search', as: 'search'
+  
   get 'searchs/search' => 'searchs#search'
 
   resources :users, only: [:show, :index, :edit, :update] do

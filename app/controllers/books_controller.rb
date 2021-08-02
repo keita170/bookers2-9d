@@ -12,8 +12,6 @@ class BooksController < ApplicationController
     @user = @booki.user
     @comment = Comment.new
   end
-
-
   def edit
     @book = Book.find(params[:id])
     if @book.user == current_user
@@ -57,6 +55,6 @@ class BooksController < ApplicationController
  private
 
  def book_params
-   params.require(:book).permit(:title, :body, :evaluation)
+   params.require(:book).permit(:title, :body, :evaluation, :category)
  end
 end

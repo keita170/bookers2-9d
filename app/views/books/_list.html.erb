@@ -18,11 +18,13 @@
         <h2>New book</h2>
         <%= form_with model:book, local:true do |f| %>
         <p>Title</p>
-        <%= f.text_field :title %>
+        <%= f.text_field :title, class:"form-control" %>
         <p>Opinion</p>
-        <%= f.text_area :body %>
+        <%= f.text_area :body, class:"form-control" %>
+        <p>Category</p>
+        <%= f.text_field :category, class:"form-control" %>
         <br>
-        <div id="evaluation_stars">
+        <div id="evaluation_stars" class="mb-2">
           <%= f.label :evaluation,'Rate'  %>
         </div>
         <script>

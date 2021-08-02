@@ -41,6 +41,12 @@
               <span class="fas fa-sign-out-alt text-light"> logout</span>
               <% end %>
             </li>
+            <li>
+              <%= form_with url:search_path, method: :get, local:true do |f| %>
+              <%= f.text_field :keyword %>
+              <%= f.submit "検索" %>
+              <% end %>
+            </li>
       
             <% else %>
             <li>
@@ -73,12 +79,7 @@
       
       <div class="row">
         <div class="col-8 col-offset-4 text-right">
-          <%= form_with url:searchs_search_path, method: :get, local:true do |f| %>
-          　<%= f.text_field :value %>
-          　<%= f.select :model, options_for_select({ "User" => "user", "Book" => "book" }) %>
-          　<%= f.select :method, options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical" }) %>
-          　<%= f.submit "検索" %>
-          <% end %>
+          
         </div>
       </div>
 

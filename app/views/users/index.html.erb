@@ -32,7 +32,22 @@
         <%= f.text_field :title %>
         <p>Opinion</p>
         <%= f.text_area :body %>
+        <p>Category</p>
+        <%= f.text_field :category %>
         <br>
+        <div id="evaluation_stars" class="mt-2">
+          <%= f.label :evaluation,'Rate'  %>
+        </div>
+        <script>
+          $('#evaluation_stars').raty({
+            size     : 36,
+            starOn: '<%= asset_path('star-on.png') %>',
+            starOff: '<%= asset_path('star-off.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            scoreName: 'book[evaluation]',
+            half: true,
+          });
+        </script>
         <%= f.submit 'Create Book', class:"btn btn-success" %>
         <% end %>
 
