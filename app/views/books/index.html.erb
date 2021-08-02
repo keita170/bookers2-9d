@@ -19,6 +19,7 @@
       </div>
       <div class="col-md-8 offset-md-1">
         <h2>Books</h2>
+        <%= link_to "新しい順", books_path(sort: '[created_at] desc') %> | <%= link_to "評価の高い順", books_path(sort: '[evaluation] desc') %>
         <table class="table table-hover table-inverse">
           <thead>
            <tr>
