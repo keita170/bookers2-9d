@@ -19,7 +19,7 @@
                </th>
             <th><%= link_to @booki.title, book_path(@booki.id) %></th>
             <th><%= @booki.body %></th>
-            <th><%= link_to @booki.category, search_path(keyword: book.category) %></th>
+            <th><%= link_to @booki.category, search_path(keyword: @book.category) %></th>
             <th class="book_<%= @booki.id %>">
               <%= render 'favorites/favorite-button', booki: @booki %>
             </th>
